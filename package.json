@@ -21,5 +21,58 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "scripts": {
+    "build": "pnpm check-deps && rimraf dist && tsc --project tsconfig.build.json",
+    "check-deps": "check-dependencies",
+    "check-types": "pnpm check-deps && tsc --noEmit",
+    "generate-barrels": "barrelsby --config barrelsby.config.json",
+    "lint": "pnpm check-deps && eslint_d \"**/*.ts\"",
+    "prepare": "husky",
+    "prettier:check": "pnpm check-deps && prettier -c .",
+    "prettier:write": "pnpm check-deps && prettier -w .",
+    "start:dev": "pnpm check-deps && pnpm tsx watch --clear-screen=false src/index.ts",
+    "test": "pnpm check-deps && jest"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "20.1.0",
+    "@commitlint/config-conventional": "20.0.0",
+    "@eslint/js": "9.39.1",
+    "@types/jest": "30.0.0",
+    "@types/node": "24.10.1",
+    "barrelsby": "2.8.1",
+    "check-dependencies": "2.0.0",
+    "eslint": "9.39.1",
+    "eslint_d": "14.3.0",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-import-resolver-typescript": "4.4.4",
+    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-prettier": "5.5.4",
+    "globals": "16.5.0",
+    "husky": "9.1.7",
+    "jest": "30.2.0",
+    "lint-staged": "16.2.7",
+    "organize-imports-cli": "0.10.0",
+    "prettier": "3.7.2",
+    "prettier-plugin-organize-imports": "4.3.0",
+    "prettier-plugin-packagejson": "2.5.20",
+    "rimraf": "6.1.2",
+    "ts-jest": "29.4.5",
+    "ts-node": "10.9.2",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.48.0"
+  },
+  "packageManager": "pnpm@10.24.0+sha512.01ff8ae71b4419903b65c60fb2dc9d34cf8bb6e06d03bde112ef38f7a34d6904c424ba66bea5cdcf12890230bf39f9580473140ed9c946fef328b6e5238a345a",
+  "engines": {
+    "node": "24",
+    "npm": "use yarn",
+    "yarn": "1"
+  },
+  "engineStrict": true
 }
