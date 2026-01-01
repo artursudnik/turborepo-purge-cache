@@ -30,32 +30,39 @@ export async function removeOldRuns({
   }[] = (
     await Promise.all(
       runFilenames.map(async (runFilename) => {
-        const content = JSON.parse(
-          await fs.promises.readFile(
-            path.join(runsFolder, runFilename),
-            'utf8',
-          ),
-        );
+        try {
+          const content = JSON.parse(
+            await fs.promises.readFile(
+              path.join(runsFolder, runFilename),
+              'utf8',
+            ),
+          );
 
-        const schema = z.object({
-          execution: z.object({ startTime: z.number().positive() }),
-        });
+          const schema = z.object({
+            execution: z.object({ startTime: z.number().positive() }),
+          });
 
-        const validationResult = schema.safeParse(content);
+          const validationResult = schema.safeParse(content);
 
-        if (!validationResult.success) {
+          if (!validationResult.success) {
+            console.log(
+              `WARNING - invalid run file format: ${runFilename}: ${JSON.stringify(z.treeifyError(validationResult.error))}`,
+            );
+            return null;
+          }
+
+          const executionTimestamp = validationResult.data.execution.startTime;
+
+          return {
+            filename: runFilename,
+            executionTime: new Date(executionTimestamp),
+          };
+        } catch (error) {
           console.log(
-            `WARNING - invalid run file format: ${runFilename}: ${JSON.stringify(z.treeifyError(validationResult.error))}`,
+            `WARNING - could not read or parse run file: ${runFilename}: ${error instanceof Error ? error.message : String(error)}`,
           );
           return null;
         }
-
-        const executionTimestamp = validationResult.data.execution.startTime;
-
-        return {
-          filename: runFilename,
-          executionTime: new Date(executionTimestamp),
-        };
       }),
     )
   ).filter((run) => run !== null);
