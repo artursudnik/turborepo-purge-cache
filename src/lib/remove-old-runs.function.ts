@@ -1,6 +1,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+/**
+ * Removes old runs from a specified folder based on a time-to-live (TTL) value in days.
+ *
+ * @param {Object} params - An object containing the method parameters.
+ * @param {string} params.runsFolder - The path to the folder containing run files to check and remove.
+ * @param {number} params.daysTTL - The number of days to use as the time-to-live threshold for determining old runs.
+ * @return {Promise<void>} A promise that resolves when the old run files have been removed, or if no files need to be removed.
+ */
 export async function removeOldRuns({
   runsFolder,
   daysTTL,

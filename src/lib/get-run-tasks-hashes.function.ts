@@ -1,5 +1,12 @@
 import fs from 'node:fs';
 
+/**
+ * Retrieves an array of task hashes from the specified run file.
+ *
+ * @param {Object} params - The parameter object.
+ * @param {string} params.runFilePath - The file path of the run file containing task data.
+ * @return {Promise<string[]>} A promise that resolves to an array of task hashes.
+ */
 export async function getRunTasksHashes({
   runFilePath,
 }: {

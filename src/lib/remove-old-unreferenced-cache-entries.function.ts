@@ -3,6 +3,15 @@ import path from 'node:path';
 import { getOldCacheEntriesHashes } from './get-old-cache-entries-hashes.function';
 import { getRunTasksHashes } from './get-run-tasks-hashes.function';
 
+/**
+ * Removes old and unreferenced cache entries from the specified turbo folder. Cache entries are considered
+ * unreferenced if they are not associated with any current task runs, and old if they exceed the time-to-live (TTL) period in days.
+ *
+ * @param {Object} params - The parameters for the method.
+ * @param {string} params.turboFolder - The path to the turbo folder containing the cache and runs directories.
+ * @param {number} params.daysTTL - The time-to-live period (in days) used to identify old cache entries.
+ * @return {Promise<void>} A promise that resolves when the removal process is completed.
+ */
 export async function removeOldUnreferencedCacheEntries({
   turboFolder,
   daysTTL,
