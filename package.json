@@ -1,0 +1,25 @@
+{
+  "name": "@artursudnik/turborepo-purge-cache",
+  "version": "0.0.0",
+  "description": "A CLI tool to purge .turbo folder content based on Time-To-Live (TTL) and task cached output references",
+  "keywords": [
+    "turborepo",
+    "turbo",
+    "cache",
+    "purge",
+    "cleanup",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/artursudnik/turborepo-purge-cache.git"
+  },
+  "license": "ISC",
+  "author": "Artur Sudnik-Hrynkiewicz",
+  "bin": {
+    "turbo-purge-cache": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ]
+}
