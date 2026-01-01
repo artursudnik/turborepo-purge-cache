@@ -76,5 +76,8 @@
   "engines": {
     "node": ">= 22"
   },
-  "engineStrict": true
+  "engineStrict": true,
+  "publishConfig": {
+    "access": "public"
+  }
 }
