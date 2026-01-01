@@ -13,8 +13,7 @@ export async function folderExistsAndIsReadable(
     await fs.promises.access(targetPath, fs.constants.R_OK);
     const stats = await fs.promises.stat(targetPath);
     return stats.isDirectory();
-  } catch (error) {
-    console.error(error);
+  } catch {
     return false;
   }
 }
