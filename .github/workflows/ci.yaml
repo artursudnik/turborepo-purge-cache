@@ -53,7 +53,7 @@ jobs:
         run: pnpm prettier:check
 
       - name: Run eslint
-        run: pnpm lint
+        run: pnpm lint:check
 
       - name: Unit test
         run: pnpm test
