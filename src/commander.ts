@@ -33,7 +33,7 @@ export const parseArguments = (): {
 
         if (error) {
           program.error(
-            'invalid depth runs-ttl: ' +
+            'invalid runs-ttl: ' +
               JSON.stringify(z.flattenError(error).formErrors[0]),
           );
         } else {
@@ -55,7 +55,7 @@ export const parseArguments = (): {
 
         if (error) {
           program.error(
-            'invalid depth runs-ttl: ' +
+            'invalid cache-ttl: ' +
               JSON.stringify(z.flattenError(error).formErrors[0]),
           );
         } else {
