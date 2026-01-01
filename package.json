@@ -39,6 +39,9 @@
       "@commitlint/config-conventional"
     ]
   },
+  "dependencies": {
+    "commander": "14.0.2"
+  },
   "devDependencies": {
     "@commitlint/cli": "20.3.0",
     "@commitlint/config-conventional": "20.3.0",
