@@ -5,12 +5,16 @@ import {
   removeOldUnreferencedCacheEntries,
 } from './lib';
 
-const turboFolder = path.join(__dirname, '..', '.turbo');
+const turboFolder = path.join(process.cwd(), '.turbo');
 const runsFolder = path.join(turboFolder, 'runs');
 
 (async (): Promise<void> => {
+  console.log('starting cleanup...');
+
+  console.log(`checking ${turboFolder} folder`);
+
   if (!(await folderExistsAndIsReadable(turboFolder))) {
-    console.error('.turbo folder does not exist or is not readable');
+    console.error(`${turboFolder} folder does not exist or is not readable`);
     process.exit(1);
   }
 
