@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import z from 'zod';
 
 /**
  * Retrieves an array of task hashes from the specified run file.
@@ -14,5 +15,18 @@ export async function getRunTasksHashes({
 }): Promise<string[]> {
   const fileContent = await fs.promises.readFile(runFilePath, 'utf8');
   const contentParsed = JSON.parse(fileContent);
-  return contentParsed.tasks.map((task: { hash: string }) => task.hash);
+
+  const schema = z.object({
+    tasks: z.array(z.object({ hash: z.string() })),
+  });
+
+  const validationResult = schema.safeParse(contentParsed);
+
+  if (!validationResult.success) {
+    throw new Error(
+      `Invalid run file format: ${runFilePath}. ${JSON.stringify(z.flattenError(validationResult.error).fieldErrors)}`,
+    );
+  }
+
+  return validationResult.data.tasks.map((task) => task.hash);
 }
