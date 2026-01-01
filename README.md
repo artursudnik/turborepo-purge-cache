@@ -1,5 +1,8 @@
 # @artursudnik/turborepo-purge-cache
 
+[![npm version](https://img.shields.io/npm/v/@artursudnik/turborepo-purge-cache.svg)](https://www.npmjs.com/package/@artursudnik/turborepo-purge-cache)
+[![license](https://img.shields.io/npm/l/@artursudnik/turborepo-purge-cache.svg)](https://github.com/artursudnik/turborepo-purge-cache/blob/main/LICENSE)
+
 A CLI tool to purge `.turbo` folder content based on Time-To-Live (TTL) and task cached output references.
 
 Turborepo's local cache can grow significantly over time. While Turborepo manages the cache, it doesn't always aggressively clean up old runs or unreferenced cache entries. This tool helps keep your `.turbo` folder lean.
