@@ -20,15 +20,21 @@ export async function getOldCacheEntriesHashes({
   timeLimit.setDate(timeLimit.getDate() - daysTTL);
 
   const cacheFiles = await fs.promises.readdir(cacheFolder);
-  const oldCacheEntries = cacheFiles.filter(
-    (file) => fs.statSync(path.join(cacheFolder, file)).birthtime < timeLimit,
+
+  const oldCacheEntriesWithStats = await Promise.all(
+    cacheFiles.map(async (file) => {
+      const stats = await fs.promises.stat(path.join(cacheFolder, file));
+      return { file, stats };
+    }),
   );
 
+  const oldCacheEntries = oldCacheEntriesWithStats
+    .filter(({ stats }) => stats.birthtime < timeLimit)
+    .map(({ file }) => file);
+
   const oldCacheEntriesHashes: string[] = oldCacheEntries
-    .map((entry) => {
-      return entry.split('.')[0];
-    })
-    .filter((hash) => !hash.includes('-meta'));
+    .filter((file) => !file.endsWith('-meta.json'))
+    .map((entry) => entry.replace(/\.tar\.zst$/, '')); // extracting hash from filename
 
   return oldCacheEntriesHashes;
 }
