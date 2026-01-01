@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import z from 'zod';
 
 /**
  * Removes old runs from a specified folder based on a time-to-live (TTL) value in days.
@@ -35,16 +36,26 @@ export async function removeOldRuns({
             'utf8',
           ),
         );
-        const executionTime = content.execution.startTime;
 
-        if (executionTime) {
-          return {
-            filename: runFilename,
-            executionTime: new Date(executionTime),
-          };
-        } else {
+        const schema = z.object({
+          execution: z.object({ startTime: z.number().positive() }),
+        });
+
+        const validationResult = schema.safeParse(content);
+
+        if (!validationResult.success) {
+          console.log(
+            `WARNING - invalid run file format: ${runFilename}: ${JSON.stringify(z.treeifyError(validationResult.error))}`,
+          );
           return null;
         }
+
+        const executionTimestamp = validationResult.data.execution.startTime;
+
+        return {
+          filename: runFilename,
+          executionTime: new Date(executionTimestamp),
+        };
       }),
     )
   ).filter((run) => run !== null);
