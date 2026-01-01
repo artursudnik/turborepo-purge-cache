@@ -9,7 +9,7 @@ import {
 
 const { path: pathArg, options } = parseArguments();
 
-const turboFolder = pathArg ?? path.join(process.cwd(), '.turbo');
+const turboFolder = path.resolve(pathArg ?? path.join(process.cwd(), '.turbo'));
 const runsFolder = path.join(turboFolder, 'runs');
 
 (async (): Promise<void> => {
