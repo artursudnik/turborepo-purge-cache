@@ -32,7 +32,6 @@
     "prepare": "husky",
     "prettier:check": "pnpm check-deps && prettier -c .",
     "prettier:fix": "pnpm check-deps && prettier -w .",
-    "start:dev": "pnpm check-deps && pnpm tsx watch --clear-screen=false src/index.ts",
     "test": "pnpm check-deps && jest"
   },
   "commitlint": {
