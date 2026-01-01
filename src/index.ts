@@ -1,11 +1,14 @@
 import path from 'node:path';
+import { parseArguments } from './commander';
 import {
   folderExistsAndIsReadable,
   removeOldRuns,
   removeOldUnreferencedCacheEntries,
 } from './lib';
 
-const turboFolder = path.join(process.cwd(), '.turbo');
+const { path: pathArg, options } = parseArguments();
+
+const turboFolder = pathArg ?? path.join(process.cwd(), '.turbo');
 const runsFolder = path.join(turboFolder, 'runs');
 
 (async (): Promise<void> => {
@@ -18,6 +21,10 @@ const runsFolder = path.join(turboFolder, 'runs');
     process.exit(1);
   }
 
-  await removeOldRuns({ runsFolder, daysTTL: 1 });
-  await removeOldUnreferencedCacheEntries({ turboFolder, daysTTL: 1 });
+  await removeOldRuns({ runsFolder, daysTTL: options.runsTtl });
+
+  await removeOldUnreferencedCacheEntries({
+    turboFolder,
+    daysTTL: options.cacheTtl,
+  });
 })();
