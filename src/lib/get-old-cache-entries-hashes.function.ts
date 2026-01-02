@@ -29,7 +29,7 @@ export async function getOldCacheEntriesHashes({
   );
 
   const oldCacheEntries = oldCacheEntriesWithStats
-    .filter(({ stats }) => stats.birthtime < timeLimit)
+    .filter(({ stats }) => stats.mtime < timeLimit)
     .map(({ file }) => file);
 
   const oldCacheEntriesHashes: string[] = oldCacheEntries
