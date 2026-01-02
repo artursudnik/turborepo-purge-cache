@@ -2,3 +2,4 @@ dist
 pnpm-lock.yaml
 tsconfig.json
 CHANGELOG.md
+renovate.json
