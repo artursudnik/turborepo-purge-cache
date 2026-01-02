@@ -15,7 +15,7 @@ export const parseArguments = (): {
   const program = new Command();
 
   program
-    .name('turbo-cache-purge')
+    .name('turbo-purge-cache')
     .description(
       'purge .turbo folder content based on TTL and task cached output references',
     )
