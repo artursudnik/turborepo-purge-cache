@@ -26,7 +26,7 @@ export const parseArguments = (): {
       (v) => {
         const { error, data: value } = z
           .string()
-          .regex(/^\d+$/, { message: 'must be a integer' })
+          .regex(/^\d+$/, { message: 'must be an integer' })
           .pipe(z.transform((v) => parseInt(v, 10)))
           .pipe(z.number().min(1))
           .safeParse(v);
@@ -48,7 +48,7 @@ export const parseArguments = (): {
       (v) => {
         const { error, data: value } = z
           .string()
-          .regex(/^\d+$/, { message: 'must be a integer' })
+          .regex(/^\d+$/, { message: 'must be an integer' })
           .pipe(z.transform((v) => parseInt(v, 10)))
           .pipe(z.number().min(0))
           .safeParse(v);
