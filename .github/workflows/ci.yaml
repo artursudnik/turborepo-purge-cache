@@ -56,4 +56,4 @@ jobs:
         run: pnpm lint:check
 
       - name: Unit test
-        run: pnpm test
+        run: pnpm test:coverage
