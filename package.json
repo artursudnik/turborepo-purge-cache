@@ -32,7 +32,8 @@
     "prepare": "husky",
     "prettier:check": "pnpm check-deps && prettier -c .",
     "prettier:fix": "pnpm check-deps && prettier -w .",
-    "test": "pnpm check-deps && jest"
+    "test": "pnpm check-deps && jest",
+    "test:coverage": "pnpm check-deps && jest --coverage"
   },
   "commitlint": {
     "extends": [
