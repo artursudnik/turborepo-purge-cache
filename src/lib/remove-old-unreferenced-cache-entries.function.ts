@@ -60,10 +60,35 @@ export async function removeOldUnreferencedCacheEntries({
 
     console.log(`Removing ${filesToBeRemoved.length} files.`);
 
-    await Promise.all(
+    const deletionResults = await Promise.allSettled(
       filesToBeRemoved.map((file) =>
         fs.promises.rm(path.join(cacheFolder, file)),
       ),
     );
+
+    const failedDeletions = deletionResults
+      .map((result, index) => {
+        if (result.status === 'rejected') {
+          return {
+            file: filesToBeRemoved[index],
+            reason: result.reason,
+          };
+        }
+        return null;
+      })
+      .filter(
+        (failure): failure is { file: string; reason: unknown } =>
+          failure !== null,
+      );
+
+    if (failedDeletions.length > 0) {
+      console.error(
+        `Failed to remove ${failedDeletions.length} file(s):`,
+        failedDeletions.map((f) => f.file),
+      );
+      failedDeletions.forEach((f) => {
+        console.error(`Error removing ${f.file}:`, f.reason);
+      });
+    }
   }
 }
