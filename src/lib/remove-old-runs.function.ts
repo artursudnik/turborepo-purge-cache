@@ -76,11 +76,24 @@ export async function removeOldRuns({
       `Removing ${runsFilesToBeRemoved.length} runs older than ${daysTTL} days.`,
     );
 
-    await Promise.all(
+    const deletionResults = await Promise.allSettled(
       runsFilesToBeRemoved.map((run) =>
         fs.promises.rm(path.join(runsFolder, run)),
       ),
     );
+
+    deletionResults.forEach((result, index) => {
+      if (result.status === 'rejected') {
+        const runFilename = runsFilesToBeRemoved[index];
+        console.log(
+          `WARNING - could not delete run file: ${runFilename}: ${
+            result.reason instanceof Error
+              ? result.reason.message
+              : String(result.reason)
+          }`,
+        );
+      }
+    });
   } else {
     console.log(`No runs older than ${daysTTL} days found.`);
   }
