@@ -19,22 +19,24 @@ export async function getOldCacheEntriesHashes({
   const timeLimit = new Date();
   timeLimit.setDate(timeLimit.getDate() - daysTTL);
 
-  const cacheFiles = await fs.promises.readdir(cacheFolder);
+  const cacheMetaFiles = (await fs.promises.readdir(cacheFolder)).filter(
+    (file) => file.endsWith('-meta.json'),
+  );
 
-  const oldCacheEntriesWithStats = await Promise.all(
-    cacheFiles.map(async (file) => {
+  const cacheMetaFilesWithStats = await Promise.all(
+    cacheMetaFiles.map(async (file) => {
       const stats = await fs.promises.stat(path.join(cacheFolder, file));
       return { file, stats };
     }),
   );
 
-  const oldCacheEntries = oldCacheEntriesWithStats
+  const oldCacheMetaFiles = cacheMetaFilesWithStats
     .filter(({ stats }) => stats.mtime < timeLimit)
     .map(({ file }) => file);
 
-  const oldCacheEntriesHashes: string[] = oldCacheEntries
-    .filter((file) => !file.endsWith('-meta.json'))
-    .map((entry) => entry.replace(/\.tar\.zst$/, '')); // extracting hash from filename
+  const oldCacheEntriesHashes: string[] = oldCacheMetaFiles.map((entry) =>
+    entry.replace(/-meta\.json$/, ''),
+  );
 
   return oldCacheEntriesHashes;
 }
