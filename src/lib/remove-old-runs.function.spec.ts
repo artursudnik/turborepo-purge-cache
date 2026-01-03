@@ -1,6 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { folderExistsAndIsReadable } from './folder-exists-and-is-readable.function';
 import { removeOldRuns } from './remove-old-runs.function';
+
+jest.mock('./folder-exists-and-is-readable.function');
 
 jest.mock('node:fs', () => ({
   promises: {
@@ -20,6 +23,7 @@ describe('removeOldRuns', () => {
     jest.useFakeTimers();
     jest.setSystemTime(now);
     jest.spyOn(console, 'log').mockImplementation(() => {});
+    (folderExistsAndIsReadable as jest.Mock).mockResolvedValue(true);
   });
 
   afterEach(() => {
@@ -144,5 +148,16 @@ describe('removeOldRuns', () => {
       'No runs older than 7 days found.',
     );
     expect(fs.promises.rm).not.toHaveBeenCalled();
+  });
+
+  it('should log a message and return if the runs folder does not exist', async () => {
+    (folderExistsAndIsReadable as jest.Mock).mockResolvedValue(false);
+
+    await removeOldRuns({ runsFolder, daysTTL });
+
+    expect(console.log).toHaveBeenCalledWith(
+      `No runs folder found at ${runsFolder}.`,
+    );
+    expect(fs.promises.readdir).not.toHaveBeenCalled();
   });
 });

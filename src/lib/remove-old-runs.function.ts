@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import z from 'zod';
+import { folderExistsAndIsReadable } from './folder-exists-and-is-readable.function';
 
 /**
  * Removes old runs from a specified folder based on a time-to-live (TTL) value in days.
@@ -17,6 +18,11 @@ export async function removeOldRuns({
   runsFolder: string;
   daysTTL: number;
 }): Promise<void> {
+  if (!(await folderExistsAndIsReadable(runsFolder))) {
+    console.log(`No runs folder found at ${runsFolder}.`);
+    return;
+  }
+
   const timeLimit = new Date();
   timeLimit.setDate(timeLimit.getDate() - daysTTL);
 
