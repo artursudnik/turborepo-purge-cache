@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/artursudnik/turborepo-purge-cache/compare/v1.0.0...v1.0.1) (2026-01-03)
+
+
+### Bug Fixes
+
+* handling non exisiting runs folder ([#11](https://github.com/artursudnik/turborepo-purge-cache/issues/11)) ([a527fc4](https://github.com/artursudnik/turborepo-purge-cache/commit/a527fc4979229d5ea759c0222e94a68da458d0c5))
+
 ## 1.0.0 (2026-01-02)
 
 
