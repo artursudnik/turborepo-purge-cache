@@ -22,7 +22,7 @@ export async function removeOldUnreferencedCacheEntries({
   const runsPath = path.join(turboFolder, 'runs');
   const cacheFolder = path.join(turboFolder, 'cache');
 
-  const runsFilenamesLeft = await fs.promises.readdir(runsPath);
+  const runsFilenamesLeft = await fs.promises.readdir(runsPath).catch(() => []);
 
   const taskHashesReferenced = new Set<string>();
 

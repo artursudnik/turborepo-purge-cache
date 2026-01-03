@@ -129,15 +129,6 @@ describe('removeOldUnreferencedCacheEntries', () => {
     );
   });
 
-  it('should propagate errors from fs.promises.readdir', async () => {
-    const error = new Error('Read error');
-    (fs.promises.readdir as jest.Mock).mockRejectedValue(error);
-
-    await expect(
-      removeOldUnreferencedCacheEntries({ turboFolder, daysTTL }),
-    ).rejects.toThrow('Read error');
-  });
-
   it('should propagate errors from getRunTasksHashes', async () => {
     (fs.promises.readdir as jest.Mock).mockResolvedValue(['run1.json']);
     const error = new Error('Parse error');

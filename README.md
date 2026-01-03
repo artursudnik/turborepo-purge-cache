@@ -28,6 +28,9 @@ pnpm add -g @artursudnik/turborepo-purge-cache
 
 ## Usage
 
+It is recommended to use [the Run Summaries](https://vercel.com/changelog/turborepo-run-summary-is-now-available)
+option to keep track of cache usage. Use `--summarize` flag to enable it or set TURBO_RUN_SUMMARY=true environment variable.
+
 ```bash
 turbo-purge-cache [path] [options]
 ```
