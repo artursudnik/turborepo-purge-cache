@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/artursudnik/turborepo-purge-cache/compare/v1.0.1...v1.1.0) (2026-01-05)
+
+
+### Features
+
+* add version flag to CLI for displaying package version ([ca97326](https://github.com/artursudnik/turborepo-purge-cache/commit/ca973269d2731c88a91ef503878d4e1431da3ad0))
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v4.3.5 ([#13](https://github.com/artursudnik/turborepo-purge-cache/issues/13)) ([7a2b807](https://github.com/artursudnik/turborepo-purge-cache/commit/7a2b80753a751df1609277d15d450bab5a4e133e))
+
 ## [1.0.1](https://github.com/artursudnik/turborepo-purge-cache/compare/v1.0.0...v1.0.1) (2026-01-03)
 
 
