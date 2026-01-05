@@ -4,6 +4,7 @@ import { z } from 'zod';
 const optionsSchema = z.object({
   runsTtl: z.number().min(1),
   cacheTtl: z.number().min(0),
+  version: z.boolean(),
 });
 
 type Options = z.infer<typeof optionsSchema>;
@@ -20,6 +21,7 @@ export const parseArguments = (): {
       'purge .turbo folder content based on TTL and task cached output references',
     )
     .showHelpAfterError(true)
+    .option('-v, --version', 'output the version number', false)
     .option(
       '--runs-ttl <days>',
       'number of days to keep runs',

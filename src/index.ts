@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import fs from 'node:fs';
 import path from 'node:path';
 import { parseArguments } from './commander';
 import {
@@ -8,6 +9,14 @@ import {
 } from './lib';
 
 const { path: pathArg, options } = parseArguments();
+
+if (options.version) {
+  const version = JSON.parse(
+    fs.readFileSync(path.join(__dirname, '../package.json'), 'utf8'),
+  ).version;
+  console.log(version);
+  process.exit(0);
+}
 
 const turboFolder = path.resolve(pathArg ?? path.join(process.cwd(), '.turbo'));
 const runsFolder = path.join(turboFolder, 'runs');

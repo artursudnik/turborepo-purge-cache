@@ -22,6 +22,7 @@ describe('parseArguments', () => {
       options: {
         runsTtl: 7,
         cacheTtl: 7,
+        version: false,
       },
     });
   });
@@ -52,6 +53,7 @@ describe('parseArguments', () => {
       options: {
         runsTtl: 10,
         cacheTtl: 5,
+        version: false,
       },
     });
   });
