@@ -31,7 +31,10 @@ const runsFolder = path.join(turboFolder, 'runs');
     process.exit(1);
   }
 
-  await removeOldRuns({ runsFolder, daysTTL: options.runsTtl });
+  await removeOldRuns({
+    runsFolder,
+    daysTTL: options.runsTtl,
+  });
 
   await removeOldUnreferencedCacheEntries({
     turboFolder,
