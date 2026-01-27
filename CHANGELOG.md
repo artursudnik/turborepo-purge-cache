@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/artursudnik/turborepo-purge-cache/compare/v1.1.0...v1.1.1) (2026-01-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency zod to v4.3.6 ([#34](https://github.com/artursudnik/turborepo-purge-cache/issues/34)) ([8fb7fe7](https://github.com/artursudnik/turborepo-purge-cache/commit/8fb7fe76a586e4ff7f0e15ef6e65577a1d5efde0))
+
 ## [1.1.0](https://github.com/artursudnik/turborepo-purge-cache/compare/v1.0.1...v1.1.0) (2026-01-05)
 
 
