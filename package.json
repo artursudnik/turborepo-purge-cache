@@ -65,7 +65,7 @@
     "organize-imports-cli": "0.10.0",
     "prettier": "3.8.1",
     "prettier-plugin-organize-imports": "4.3.0",
-    "prettier-plugin-packagejson": "3.0.0",
+    "prettier-plugin-packagejson": "3.0.1",
     "rimraf": "6.1.3",
     "ts-jest": "29.4.6",
     "ts-node": "10.9.2",
