@@ -52,8 +52,8 @@ importers:
         specifier: 5.5.5
         version: 5.5.5(eslint-config-prettier@10.1.8(eslint@9.39.4(jiti@2.6.1)))(eslint@9.39.4(jiti@2.6.1))(prettier@3.8.1)
       eslint_d:
-        specifier: 15.0.0
-        version: 15.0.0(jiti@2.6.1)
+        specifier: 15.0.2
+        version: 15.0.2(jiti@2.6.1)
       globals:
         specifier: 17.4.0
         version: 17.4.0
@@ -1585,8 +1585,8 @@ packages:
       jiti:
         optional: true
 
-  eslint_d@15.0.0:
-    resolution: {integrity: sha512-4GKp4YK4oxTFCNdz7ygOaB+T9+kDR/xY8RdfeB1JFU+IUuHJzXO1CBfNyVjKSy3b12sdrw6e0XA7ku5I2s+ItA==}
+  eslint_d@15.0.2:
+    resolution: {integrity: sha512-08qxnTNAHi6gaOJdixu/5gliLFRQzTAeX/aXxcFK78FPK9RQuCNnvwq2tDzlSmXc/dkK/Q2n3P4nvPhvTQJa2Q==}
     engines: {node: '>=22'}
     hasBin: true
 
@@ -4894,7 +4894,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint_d@15.0.0(jiti@2.6.1):
+  eslint_d@15.0.2(jiti@2.6.1):
     dependencies:
       debug: 4.4.3(supports-color@10.2.2)
       eslint: 10.0.3(jiti@2.6.1)(supports-color@10.2.2)
