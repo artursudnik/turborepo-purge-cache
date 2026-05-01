@@ -58,7 +58,7 @@
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-prettier": "5.5.5",
     "eslint_d": "15.0.2",
-    "globals": "17.5.0",
+    "globals": "17.6.0",
     "husky": "9.1.7",
     "jest": "30.3.0",
     "lint-staged": "16.4.0",
