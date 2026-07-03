@@ -11,6 +11,10 @@
   "platformAutomerge": true,
   "packageRules": [
     {
+      "matchDatasources": ["npm"],
+      "minimumReleaseAge": "1 day"
+    },
+    {
       "matchFileNames": [".github/workflows/**"],
       "automerge": false
     },
