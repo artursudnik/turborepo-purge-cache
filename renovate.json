@@ -8,7 +8,7 @@
   },
   "automerge": true,
   "automergeType": "branch",
-  "platformAutomerge": true,
+  "platformAutomerge": false,
   "packageRules": [
     {
       "matchDatasources": ["npm"],
