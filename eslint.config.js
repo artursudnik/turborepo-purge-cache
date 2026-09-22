@@ -2,7 +2,7 @@ const eslint = require('@eslint/js');
 const tsEslint = require('typescript-eslint');
 const prettier = require('eslint-config-prettier');
 const prettierPlugin = require('eslint-plugin-prettier');
-const importPlugin = require('eslint-plugin-import');
+const importPlugin = require('eslint-plugin-import-x');
 const globals = require('globals');
 
 module.exports = [
@@ -15,7 +15,7 @@ module.exports = [
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
     plugins: {
-      import: importPlugin,
+      'import-x': importPlugin,
       prettier: prettierPlugin,
     },
     languageOptions: {
@@ -31,7 +31,7 @@ module.exports = [
       },
     },
     settings: {
-      'import/resolver': {
+      'import-x/resolver': {
         typescript: true,
         node: true,
       },
@@ -48,7 +48,7 @@ module.exports = [
       ],
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/use-unknown-in-catch-callback-variable': 'error',
-      'import/order': [
+      'import-x/order': [
         'error',
         {
           named: true,
@@ -59,13 +59,13 @@ module.exports = [
           'newlines-between': 'never',
         },
       ],
-      'import/newline-after-import': 'error',
-      'import/first': 'error',
-      'import/no-absolute-path': 'error',
-      'import/no-default-export': 'error',
-      'import/no-deprecated': 'error',
-      'import/no-empty-named-blocks': 'error',
-      'import/no-useless-path-segments': [
+      'import-x/newline-after-import': 'error',
+      'import-x/first': 'error',
+      'import-x/no-absolute-path': 'error',
+      'import-x/no-default-export': 'error',
+      'import-x/no-deprecated': 'error',
+      'import-x/no-empty-named-blocks': 'error',
+      'import-x/no-useless-path-segments': [
         'error',
         {
           noUselessIndex: true,
