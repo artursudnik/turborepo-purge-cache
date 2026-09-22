@@ -23,17 +23,16 @@
     "dist"
   ],
   "scripts": {
-    "build": "pnpm check-deps && rimraf dist && tsc --project tsconfig.build.json",
-    "check-deps": "check-dependencies",
-    "check-types": "pnpm check-deps && tsc --noEmit",
+    "build": "rimraf dist && tsc --project tsconfig.build.json",
+    "check-types": "tsc --noEmit",
     "generate-barrels": "barrelsby --config barrelsby.config.json",
-    "lint:check": "pnpm check-deps && eslint_d \"**/*.ts\"",
-    "lint:fix": "pnpm check-deps && eslint_d --fix \"**/*.ts\"",
+    "lint:check": "eslint_d \"**/*.ts\"",
+    "lint:fix": "eslint_d --fix \"**/*.ts\"",
     "prepare": "husky",
-    "prettier:check": "pnpm check-deps && prettier -c .",
-    "prettier:fix": "pnpm check-deps && prettier -w .",
-    "test": "pnpm check-deps && NODE_OPTIONS=--experimental-vm-modules jest",
-    "test:coverage": "pnpm check-deps && NODE_OPTIONS=--experimental-vm-modules jest --coverage"
+    "prettier:check": "prettier -c .",
+    "prettier:fix": "prettier -w .",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:coverage": "NODE_OPTIONS=--experimental-vm-modules jest --coverage"
   },
   "commitlint": {
     "extends": [
