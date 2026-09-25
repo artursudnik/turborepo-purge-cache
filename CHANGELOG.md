@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.1.2](https://github.com/artursudnik/turborepo-purge-cache/compare/v1.1.1...v1.1.2) (2026-09-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency commander to v15 ([#158](https://github.com/artursudnik/turborepo-purge-cache/issues/158)) ([753a61d](https://github.com/artursudnik/turborepo-purge-cache/commit/753a61d05f09de514d3abfabd2ef304475e9b9ae))
+* **deps:** update dependency zod to v4.4.1 ([#116](https://github.com/artursudnik/turborepo-purge-cache/issues/116)) ([6069e42](https://github.com/artursudnik/turborepo-purge-cache/commit/6069e428fec6f953e7d4de17dad86276d4145ca2))
+* **deps:** update dependency zod to v4.4.2 ([#120](https://github.com/artursudnik/turborepo-purge-cache/issues/120)) ([e633e02](https://github.com/artursudnik/turborepo-purge-cache/commit/e633e02537b34a18da4f1ea92e3c0149a1d95f49))
+* **deps:** update dependency zod to v4.4.3 ([#122](https://github.com/artursudnik/turborepo-purge-cache/issues/122)) ([5031647](https://github.com/artursudnik/turborepo-purge-cache/commit/50316470a68c615a4e3a682e70a0b0a08935041c))
+* **deps:** update dependency zod to v4.6.5 ([#213](https://github.com/artursudnik/turborepo-purge-cache/issues/213)) ([c34d85f](https://github.com/artursudnik/turborepo-purge-cache/commit/c34d85fbeda4c818a6bb1f5654b3a17fe7d2765f))
+
 ## [1.1.1](https://github.com/artursudnik/turborepo-purge-cache/compare/v1.1.0...v1.1.1) (2026-02-03)
 
 
