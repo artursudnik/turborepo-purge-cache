@@ -58,7 +58,7 @@ jobs:
         run: pnpm prettier:check
 
       - name: Run eslint
-        run: pnpm lint:check
+        run: pnpm lint:ci
 
       - name: Unit test
         run: pnpm test:coverage

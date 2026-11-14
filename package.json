@@ -27,6 +27,7 @@
     "check-types": "tsc --noEmit",
     "generate-barrels": "barrelsby --config barrelsby.config.json",
     "lint:check": "eslint_d \"**/*.ts\"",
+    "lint:ci": "eslint \"**/*.ts\"",
     "lint:fix": "eslint_d --fix \"**/*.ts\"",
     "prepare": "husky",
     "prettier:check": "prettier -c .",
